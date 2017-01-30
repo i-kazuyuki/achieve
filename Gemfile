@@ -44,12 +44,9 @@ group :development, :test do
 end
 
 gem 'twitter-bootstrap-rails'
-<<<<<<< HEAD
 
 gem 'jquery-turbolinks'
 
 gem 'rails_12factor', group: :production
-=======
 gem 'jquery-turbolinks'
 gem 'devise'
->>>>>>> develop
