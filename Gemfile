@@ -50,3 +50,7 @@ gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 gem 'jquery-turbolinks'
 gem 'devise'
+<<<<<<< HEAD
+=======
+gem 'faker'
+>>>>>>> develop
