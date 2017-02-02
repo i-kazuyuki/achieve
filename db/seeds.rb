@@ -6,3 +6,12 @@ while n <= 100
   )
   n = n + 1
 end
+
+100.times do |n|
+  email = Faker::Internet.email
+  password = "password"
+  User.create!(email: email,
+               password: password,
+               password_confirmation: password,
+               )
+end
