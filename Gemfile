@@ -52,9 +52,14 @@ gem 'rails_12factor', group: :production
 gem 'jquery-turbolinks'
 
 gem 'devise'
+<<<<<<< HEAD
 
 gem 'faker'
 
 group :development do
   gem 'letter_opener_web'
 end
+=======
+gem 'faker'
+
+>>>>>>> 10848a0233bd00aac379b0d834a23fb1caa0a647
