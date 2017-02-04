@@ -4,6 +4,7 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all
+    @users = current_user
   end
 
   def new
@@ -18,31 +19,24 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blogs_params)
     @blog.user_id = current_user.id
     if @blog.save
-      redirect_to blogs_path, notice:"ブログを作成しました！"
+      # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
+      redirect_to blogs_path, notice: "ブログを作成しました!"
       NoticeMailer.sendmail_blog(@blog).deliver
     else
+      # 入力フォームを再描画します。
       render 'new'
     end
   end
 
   def edit
-    @blog = Blog.find(params[:id])
   end
 
   def update
-    @blog = Blog.find(params[:id])
-    @blog.update(blogs_params)
-    if @blog.save
-      redirect_to blogs_path, notice:"ブログを編集しました！"
+    if @blog.update(blogs_params)
+      redirect_to blogs_path, notice: "ブログを更新しました！"
     else
-      render 'new'
+      render 'edit'
     end
-  end
-
-  def destroy
-    @blog = Blog.find(params[:id])
-    @blog.destroy
-      redirect_to blogs_path, notice:"ブログを削除をしました！"
   end
 
   def confirm
@@ -50,12 +44,18 @@ class BlogsController < ApplicationController
     render :new if @blog.invalid?
   end
 
+  def destroy
+    @blog.destroy
+    redirect_to blogs_path, notice: "ブログを削除しました!"
+  end
+
+
   private
     def blogs_params
       params.require(:blog).permit(:title, :content)
     end
 
-  def set_blog
-    @blog = Blog.find(params[:id])
-  end
+    def set_blog
+      @blog = Blog.find(params[:id])
+    end
 end
