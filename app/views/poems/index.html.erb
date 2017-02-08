@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <h1>ポエム一覧</h1>
+
+    <% @poems.each do |poem| %>
+    <div class="row">
+      <p>タイトル:<%= poem.title %></p>
+      <p><%= poem.content %></p>
+      <%= link_to '詳細', poem %>
+    </div>
+    <% end %>
+  </div>
+</div>

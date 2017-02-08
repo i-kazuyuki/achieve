@@ -12,14 +12,6 @@
       <%= link_to "削除", blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？'}, class: 'btn btn-default btn-sm btn btn-danger' %>
     </div>
     <% end %>
-
-  <!--  ユーザーのみのコードにしたい場合は下記コード
-    <% @users.blogs.each do |user| %>
-    <p><%= user.user.name %></p>
-    <h4><strong><%= user.title %></strong></h4>
-    <p><%= user.content %></p>
-    <% end %>
- -->
   </div>
 </div>
 

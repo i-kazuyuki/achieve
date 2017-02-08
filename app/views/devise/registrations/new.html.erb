@@ -3,12 +3,12 @@
     <h2>サインアップ</h2>
 
     <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
-      <%= devise_error_messages! %>
+      <%= f.error_messages! %>
 
       <div class="field">
         <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "メールアドレス" %>
       </div>
-      
+
       <!-- 名前入力用のフィールドを追加 -->
       <div class="field">
       <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
