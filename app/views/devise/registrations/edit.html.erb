@@ -6,15 +6,24 @@
       <%= f.error_messages! %>
 
       <div class="field">
+        <%= profile_img(@user) if profile_img(@user) %>
+        <%= f.file_field :avatar %><br>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
+
+      <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, class: "form-control" %>
       </div>
 
-      <!-- 名前入力用のフィールドを追加 -->
+      <!-- 名前入力用のフィールド -->
       <div class="field">
         <%= f.label :名前 %><br />
         <%= f.text_field :name, class: "form-control" %>
       </div>
+
+  <!-- omniauthでサインアップした時のみパスワード欄を非表示にする設定 -->
+　<% if @user.provider.blank? %>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -38,9 +47,17 @@
     <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
   </div>
 
+　<% end %>
+
   <div class="actions">
     <%= f.submit "更新する", class: "btn btn-primary btn-block" %>
   </div>
+
+
+
+
+
+
 <% end %>
 
 <h3>アカウントの削除</h3>

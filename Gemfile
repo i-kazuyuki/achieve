@@ -45,6 +45,7 @@ end
 
 group :development do
   gem 'letter_opener_web'
+  gem 'dotenv-rails'
 end
 
 gem 'twitter-bootstrap-rails'
@@ -57,3 +58,10 @@ gem 'rails_admin'
 gem 'cancan'
 gem 'activeresource'
 gem 'her'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'carrierwave'
+# image uploader(画像をアップロードするためのgem)
+gem 'rmagick'
+# アップロードした画像ファイルのサイズを変更するたに使用する
