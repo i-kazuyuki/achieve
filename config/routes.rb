@@ -27,6 +27,13 @@ Rails.application.routes.draw do
     # 新規登録する際に、継承したregistration_controllerが使用されるようにするための設定
     registrations: "users/registrations"
   }
+  # どのブログへのコメントであるか識別するために、ルーティングのURLにブログのIDを含む必要がある
+  resources :blogs do
+    resources :comments
+    collection do
+      post :confirm
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
