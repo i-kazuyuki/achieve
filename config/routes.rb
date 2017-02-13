@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :blogs, only: [:index, :new, :create, :edit, :update ,:destroy] do
-    collection do
-      post :confirm
+      collection do
+        post :confirm
+      end
     end
-  end
 
   resources :contacts, only: [:new, :create] do
     collection do
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     # 新規登録する際に、継承したregistration_controllerが使用されるようにするための設定
     registrations: "users/registrations"
   }
+
   # どのブログへのコメントであるか識別するために、ルーティングのURLにブログのIDを含む必要がある
   resources :blogs do
     resources :comments
