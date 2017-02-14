@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'relationships/create'
+
+  get 'relationships/destroy'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :blogs, only: [:index, :new, :create, :edit, :update ,:destroy] do
@@ -28,6 +32,9 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
+  resources :users, only: [:index]
+  # ※上の１行はdevise_forより以下に記述すること
+
   # どのブログへのコメントであるか識別するために、ルーティングのURLにブログのIDを含む必要がある
   resources :blogs do
     resources :comments
@@ -35,6 +42,9 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+
+  # フォロー関係を作成するcreateアクションと削除するdestroyアクションへのroutingを作成
+  resources :relationships, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
