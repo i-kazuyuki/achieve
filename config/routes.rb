@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'relationships/create'
-
-  get 'relationships/destroy'
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :blogs, only: [:index, :new, :create, :edit, :update ,:destroy] do
@@ -45,6 +41,11 @@ Rails.application.routes.draw do
 
   # フォロー関係を作成するcreateアクションと削除するdestroyアクションへのroutingを作成
   resources :relationships, only: [:create, :destroy]
+
+  # メッセージ機能のrouting設定
+  resources :conversations do
+    resources :messages
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
