@@ -1,0 +1,10 @@
+<div class="container">
+    <h2>ユーザー詳細</h2>
+      <p><%= profile_img(@user) %></p>
+      <p>名前:<%= @user.name %></p>
+      <p>メール:<%= @user.email %></p>
+
+      <%= render 'followed' %>
+      <%= render 'followers' %>
+      <%= link_to "ユーザー一覧へ戻る", :back %>
+</div>

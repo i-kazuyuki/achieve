@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     registrations: "users/registrations"
   }
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
   # ※上の１行はdevise_forより以下に記述すること
 
   # どのブログへのコメントであるか識別するために、ルーティングのURLにブログのIDを含む必要がある
