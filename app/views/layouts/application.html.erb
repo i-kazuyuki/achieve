@@ -6,6 +6,24 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ブラウザにポップアップを表示するためのJavaScriptのalertメソッド。自分の通知だけ受け取るように設定。　-->
+  <script src="https://js.pusher.com/3.2/pusher.min.js"></script>
+  <!-- ログインしているときのみ出力するように設定 -->
+  <% if user_signed_in? %>
+    <script>
+      var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+        encrypted: true
+      });
+
+      var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+      channel.bind('comment_created', function(data) {
+        alert(data.message);
+      });
+      channel.bind('notification_created', function(data) {
+        $('#unread_count').html(data.unread_counts);
+      });
+    </script>
+  <% end %>
 </head>
 <body>
 
@@ -36,6 +54,9 @@
             </li>
             <% if user_signed_in? %>
               <li><%= link_to 'マイページ', edit_user_registration_path %></li>
+              <%= link_to  notifications_index_path, class: "navbar-brand" do %>
+                <li><i class="fa fa-bell fa-1x"><span id="unread_count"><%= @notifications_count %></span></i></li>
+              <% end %>
               <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to 'ログイン', new_user_session_path %></li>

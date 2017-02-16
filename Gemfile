@@ -65,3 +65,5 @@ gem 'carrierwave'
 # image uploader(画像をアップロードするためのgem)
 gem 'rmagick'
 # アップロードした画像ファイルのサイズを変更するたに使用する
+# pusherのgem
+gem 'pusher'

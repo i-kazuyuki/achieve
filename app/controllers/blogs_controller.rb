@@ -10,6 +10,8 @@ class BlogsController < ApplicationController
     # 入力フォームと一覧を表示するためインスタンスを2つ生成
     @comment = @blog.comments.build
     @comments = @blog.comments
+    # 通知をクリックすると、通知が既読になるように設定
+    Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
   end
 
   def new
