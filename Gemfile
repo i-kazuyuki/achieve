@@ -67,3 +67,4 @@ gem 'rmagick'
 # アップロードした画像ファイルのサイズを変更するたに使用する
 # pusherのgem
 gem 'pusher'
+gem 'fog'
