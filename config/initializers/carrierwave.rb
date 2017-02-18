@@ -12,11 +12,11 @@ CarrierWave.configure do |config|
 
   case Rails.env
     when 'production'
-      config.fog_directory = '本番環境用のバケット名'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/本番環境用のバケット名'
+      config.fog_directory = 'achieve-dive-production'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/achieve-dive-production'
     when 'development'
-      config.fog_directory = '開発環境用のバケット名'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/開発環境用のバケット名'
+      config.fog_directory = 'achieve-dive-development'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/achieve-dive-development'
   end
   #testなどの環境も作成したい場合、バケットをさらに作成し、when文を、以下の用に追加する
   #when 'test'
