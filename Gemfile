@@ -48,6 +48,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem "rspec-rails"
   gem "factory_girl_rails"
+  gem 'spring-commands-rspec' #テストの速度アップ
 end
 
 group :test do
